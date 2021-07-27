@@ -24,6 +24,7 @@ class Novo(Imovel):
 
     def __init__(self):
         super().__init__()
+        self.adicional = 0
 
     def getAdicional(self):
         return self.adicional
@@ -31,7 +32,7 @@ class Novo(Imovel):
     def setAdicional(self, adicional):
         self.adicional = adicional
 
-    def novo(self):
+    def imovelNovo(self):
         #imovel = Imovel()
         #valorNovo = float(imovel.getValor())/0.7
         valorNovo = super().getValor() * self.getAdicional()
@@ -41,6 +42,7 @@ class Velho(Imovel):
 
     def __init__(self):
         super().__init__()
+        self.desconto = 0
 
     def getDesconto(self):
         return self.desconto
@@ -48,16 +50,17 @@ class Velho(Imovel):
     def setDesconto(self, desconto):
         self.desconto = desconto
 
-    def velho(self):
+    def imovelVelho(self):
         imovel = Imovel()
         valorVelho = float(imovel.getValor()) * self.getDesconto()
         return round(valorVelho, 2)
 
 imovel = Imovel()
-novo = Novo()
-velho = Velho()
-novo.setAdicional(1.25)
-velho.setDesconto(0.75)
+novoImovel = Novo()
+velhoImovel = Velho()
+
+novoImovel.setAdicional(1.25)
+velhoImovel.setDesconto(0.75)
 
 imovel.informaImovel()
 print("O imovel é Novo ou Velho:")
@@ -65,8 +68,8 @@ print("1 - Novo")
 print("2 - Velho:")
 op = (input(">"))
 if op == "1":
-    print("Valor com adicional: ", (novo.novo()))
+    print("Valor com adicional: ", (novoImovel.imovelNovo()))
 elif op == "2":
-    print("Valor com desconto: ", (velho.velho()))
+    print("Valor com desconto: ", (velhoImovel.imovelVelho()))
 
     
